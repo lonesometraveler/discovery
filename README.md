@@ -1,6 +1,15 @@
 # `Discovery`
 
 > Rustでマイクロコントローラの世界を楽しもう
+[Rust](https://www.rust-lang.org/)を通してマイクロコントローラの世界を楽しもう！
+
+現在この本には2つのバージョンが存在します。両方ともマイクロコントローラの紹介とRustでそれらをどう扱うかを解説しています。
+1つ目のバージョンはF3 Discoveryボードを使った古いバージョンです。2つ目の新しいバージョンはmicro:bitを代わりに使用しています。
+
+- micro:bitを使った新しいバージョン (和訳作業中です):
+  https://tomoyuki-nakabayashi.github.io/discovery/microbit
+- F3 Discoveryを使った古いバージョン:
+  https://tomoyuki-nakabayashi.github.io/discovery/f3discovery
 
 和訳にご協力頂く際は、[コントリビューションガイド](./CONTRIBUTING.md)をご参照下さい。不明な点があれば、お気軽にお尋ね下さい。
 組込み固有の[対訳表](./TranslationTableEmbedded.md)も、不完全ではありますが、用意しています。
