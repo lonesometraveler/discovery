@@ -34,7 +34,7 @@ the second is newer and uses a micro:bit circuit board instead.
 - Have fun and enjoy!
 -->
 
-- [micro:bitを使った新しいバージョン (和訳作業中です)(https://tomoyuki-nakabayashi.github.io/discovery/microbit)
+- [micro:bitを使った新しいバージョン (和訳作業中です)](https://tomoyuki-nakabayashi.github.io/discovery/microbit)
 - [F3 Discoveryを使った古いバージョン](https://tomoyuki-nakabayashi.github.io/discovery/f3discovery)
 - このレポジトリにあるサンプルから始めてみましょう
 - 質問がありますか？
