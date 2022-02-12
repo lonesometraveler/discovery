@@ -1,14 +1,25 @@
 # Discovery
 
+<!--
 > Discover the world of microcontrollers through [Rust]!
+-->
+
+> [Rust]でマイクロコントローラの世界を楽しもう！
 
 [Rust]: https://www.rust-lang.org/
 
+<!--
 This book is an introductory course on microcontroller-based embedded systems that uses Rust as the
 teaching language rather than the usual C/C++.
+-->
 
-## Scope
+この本はC/C++ではなく、Rustを使ったマイクロコントローラの組込みシステム入門コースです。
 
+<!-- ## Scope -->
+
+## スコープ
+
+<!--
 The following topics will be covered (eventually, I hope):
 
 - How to write, build, flash and debug an "embedded" (Rust) program.
@@ -21,9 +32,19 @@ The following topics will be covered (eventually, I hope):
 
 - Control systems concepts: sensors, calibration, digital filters, actuators, open loop control,
   closed loop control, etc.
+-->
 
-## Approach
+以下のトピックを取り上げます（ゆくゆくは、そうしたいです）
+- 「組込み」（Rust）の書き方、ビルド方法、フラッシュへの書き込み方法、デバッグ方法。
+- マイクロコントローラで一般的な機能（「ペリフェラル」）。デジタル入出力、パルス幅変調（PWM）、アナログデジタル変換（ADC）、シリアル、I2C、SPIのような一般的な通信プロトコル、など。
+- マルチタスクの考え方。協調的マルチタスク vs プリエンプティブマルチタスク、割り込み、スケジューラなど。
+- 制御システムの概念。センサ、キャリブレーション、デジタルフィルタ、アクチュエータ、開ループ制御、閉ループ制御、など。
 
+<!-- ## Approach -->
+
+## 進め方
+
+<!--
 - Beginner friendly. No previous experience with microcontrollers or embedded systems is required.
 
 - Hands on. Plenty of exercises to put the theory into practice. *You* will be doing most of the
@@ -31,9 +52,17 @@ The following topics will be covered (eventually, I hope):
 
 - Tool centered. We'll make plenty use of tooling to ease development. "Real" debugging, with GDB,
   and logging will be introduced early on. Using LEDs as a debugging mechanism has no place here.
+-->
 
-## Non-goals
+- 初心者に優しく。マイクロコントローラや組込みシステムの開発経験は必要ありません。
+- ハンズオン形式で。理論を実践するためにたくさんの演習をします。*あなた*は多くの演習に取り組むでしょう。
+- ツール中心に。開発を容易にするツールをたくさん使用します。GDBを使った「実際の」デバッグとログ出力を早い段階で導入します。デバッグ機能としてLEDを使用するようなことは、ここではやりません。
 
+<!-- ## Non-goals -->
+
+## 目標としないこと
+
+<!--
 What's out of scope for this book:
 
 - Teaching Rust. There's plenty of material on that topic already. We'll focus on microcontrollers
@@ -44,20 +73,50 @@ What's out of scope for this book:
 
 - Covering details such as linker scripts and the boot process. For example, we'll use existing tools
   to help get your code onto your board, but not go into detail about how those tools work.
+-->
 
+この本でスコープ外とすることは、以下の通りです。
+
+- Rustを教えること。このトピックについては、既に多くの教材があります。マイクロコントローラと組込みシステムに集中します。
+- 電気回路または電子機器の理論についての包括的なテキストであること。いくつかのデバイスがどのように動くか、を理解するための最低限の情報を提供します。
+- リンカスクリプトやブートプロセスといったRustの低レベルな詳細を説明すること。例えば、ボードにプログラムを書き込むために既存のツールを使いますが、それらのツールがどのように動くか、の詳細には踏み込みません。
+
+<!--
 Also I don't intend to port this material to other development boards; this book will make exclusive
 use of the micro:bit development board.
+-->
 
-## Reporting problems
+また、この教材を他の開発ボードに移植するつもりもありません。この本は、micro:bit開発ボード専用のものです。
 
+<!-- ## Reporting problems -->
+
+## 問題の報告
+
+<!--
 The source of this book is in [this repository]. If you encounter any typo or problem with the code
 report it on the [issue tracker].
 
 [this repository]: https://github.com/rust-embedded/discovery
 [issue tracker]: https://github.com/rust-embedded/discovery/issues
+-->
 
-## Other embedded Rust resources
+この本のソースコードは[このレポジトリ]にあります。誤植やコードに問題を発見した場合は、[issueトラッカー]に報告して下さい。
 
+[このレポジトリ]: https://github.com/rust-embedded/discovery
+[issueトラッカー]: https://github.com/rust-embedded/discovery/issues
+
+> 訳注：和訳への問題報告は、下記にお願いいたします。
+
+和訳のソースは[和訳レポジトリ]にあります。問題を発見した場合は、[和訳issue]に報告して下さい。
+
+[和訳レポジトリ]: https://github.com/tomoyuki-nakabayashi/discovery
+[和訳issue]: https://github.com/tomoyuki-nakabayashi/discovery/issues
+
+<!-- ## Other embedded Rust resources -->
+
+## 他の組込みRustの資料
+
+<!--
 This Discovery book is just one of several embedded Rust resources provided by the
 [Embedded Working Group]. The full selection can be found at [The Embedded Rust Bookshelf]. This
 includes the list of [Frequently Asked Questions].
@@ -65,3 +124,11 @@ includes the list of [Frequently Asked Questions].
 [Embedded Working Group]: https://github.com/rust-embedded/wg
 [The Embedded Rust Bookshelf]: https://docs.rust-embedded.org
 [Frequently Asked Questions]: https://docs.rust-embedded.org/faq.html
+-->
+
+このDiscovery本は、[組込みワーキンググループ]が提供する組込みRust資料の1つに過ぎません。
+[組込みRustの本棚]に、数多くの資料があります。そこには、[よくある質問と回答]のリストも有ります。
+
+[組込みワーキンググループ]: https://github.com/rust-embedded/wg
+[組込みRustの本棚]: https://docs.rust-embedded.org
+[よくある質問と回答]: https://docs.rust-embedded.org/faq.html
