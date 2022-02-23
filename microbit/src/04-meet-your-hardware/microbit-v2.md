@@ -83,7 +83,7 @@ nRF52833, what is the Cortex-M4?
 -->
 
 使用するチップがNordicによって製造されているとすると、Armとは誰なのでしょう？
-チップがnRF42833とすると、Cortex-M4とは何なのでしょうか？
+チップがnRF52833とすると、Cortex-M4とは何なのでしょうか？
 
 <!--
 You might be surprised to hear that while "Arm-based" chips are quite
