@@ -1,24 +1,54 @@
-# Build it
+<!-- # Build it -->
 
+# ビルドする
+
+<!--
 The first step is to build our "binary" crate. Because the microcontroller has a different
 architecture than your computer we'll have to cross compile. Cross compiling in Rust land is as simple
 as passing an extra `--target` flag to `rustc`or Cargo. The complicated part is figuring out the
 argument of that flag: the *name* of the target.
+-->
 
+最初のステップは「バイナリ」クレートをビルドすることです。
+マイクロコントローラはあなたのコンピュータとはアーキテクチャが異なるため、クロスコンパイルが必要です。
+Rustでのクロスコンパイルは単に`--target`フラグを`rustc`またはCargoに渡すだけです。
+難しいところはフラグの引数として渡す*ターゲット名*に目星をつけることです。
+
+<!--
 As we already know the microcontroller on the micro:bit v2 has a Cortex-M4F processor in it, the one on v1 a Cortex-M0.
 `rustc` knows how to cross-compile to the Cortex-M architecture and provides several different targets that cover the different processors
 families within that architecture:
+-->
 
+micro:bit v2上のマイクロコントローラはCortex-M4Fプロセッサを、v1はCortex-M0プロセッサを搭載していることがわかっています。
+`rustc`はCortex-Mアーキテクチャへのクロスコンパイル方法を知っています。
+いくつかの異なるターゲットを提供しており、Cortex-Mのプロセッサファミリーをカバーしています。
+
+<!--
 - `thumbv6m-none-eabi`, for the Cortex-M0 and Cortex-M1 processors
 - `thumbv7m-none-eabi`, for the Cortex-M3 processor
 - `thumbv7em-none-eabi`, for the Cortex-M4 and Cortex-M7 processors
 - `thumbv7em-none-eabihf`, for the Cortex-M4**F** and Cortex-M7**F** processors
 - `thumbv8m.main-none-eabi`, for the Cortex-M33 and Cortex-M35P processors
 - `thumbv8m.main-none-eabihf`, for the Cortex-M33**F** and Cortex-M35P**F** processors
+-->
 
+- `thumbv6m-none-eabi`, Cortex-M0プロセッサとCortex-M1プロセッサ向け
+- `thumbv7m-none-eabi`, Cortex-M3プロセッサ向け
+- `thumbv7em-none-eabi`, Cortex-M4プロセッサとCortex-M7プロセッサ向け
+- `thumbv7em-none-eabihf`, Cortex-M4**F**プロセッサとCortex-M7**F**プロセッサ向け
+- `thumbv8m.main-none-eabi`, Cortex-M33プロセッサとCortex-M35Pプロセッサ向け
+- `thumbv8m.main-none-eabihf`, Cortex-M33**F**プロセッサとCortex-M35P**F**プロセッサ向け
+
+<!--
 For the micro:bit v2, we'll use the `thumbv7em-none-eabihf` target, for v1 the `thumbv6m-none-eabi` one.
 Before cross-compiling you have to download a pre-compiled version of the standard library
 (a reduced version of it, actually) for your target. That's done using `rustup`:
+-->
+
+micro:bit2には`thumbv7em-none-eabihf`ターゲットを、v1には`thumbv6m-none-eabi`を使います。
+クロスコンパイルをする前に、ターゲット向けに事前コンパイルされた標準ライブラリをダウンロードします（実際は縮小版ですが）。
+これは`rustup`を使ってやります。
 
 ``` console
 # For micro:bit v2
@@ -27,14 +57,24 @@ $ rustup target add thumbv7em-none-eabihf
 $ rustup target add thumbv6m-none-eabi
 ```
 
+<!--
 You only need to do the above step once; `rustup` will re-install a new standard library
 (`rust-std` component) whenever you update your toolchain. Therefore you can skip this step, if you have already added the necessary target
 while [verifying your setup].
 
 [veryfing your setup]: ../03-setup/verify.html#verifying-cargo-embed
+-->
 
+このステップは一度だければ良いです。ツールチェインをアップデートすると、`rustup`は新しい標準ライブラリ（`rust-std`）を再インストールします。
+そのため、[セットアップの検証]で既にターゲットを追加していれば、このステップを省略できます。
 
+[セットアップの検証]: ../03-setup/verify.html#verifying-cargo-embed
+
+<!--
 With the `rust-std` component in place you can now cross compile the program using Cargo:
+-->
+
+`rust-std`をインストールするとCargoを使ってプログラムをクロスコンパイルすることができます。
 
 ``` console
 # make sure you are in the `src/05-led-roulette` directory
@@ -58,12 +98,23 @@ $ cargo build --features v1 --target thumbv6m-none-eabi
 	Finished dev [unoptimized + debuginfo] target(s) in 22.73s
 ```
 
+<!--
 > **NOTE** Be sure to compile this crate *without* optimizations. The provided Cargo.toml
 > file and build command above will ensure optimizations are off.
+-->
 
+> **注意** このクレートは必ず最適化*なし*でコンパイルしてください。
+> 提供しているCargo.tomlファイルとビルドコマンドは、最適化がオフになっていることを確認してください。
+
+<!--
 OK, now we have produced an executable. This executable won't blink any LEDs,
 it's just a simplified version that we will build upon later in the chapter.
 As a sanity check, let's verify that the produced executable is actually an ARM binary:
+-->
+
+これで、実行ファイルが作成できました。
+この実行ファイルはLEDを点滅しません。この章で後で作る物を単純化したものです。
+動作確認として、作成した実行ファイルが本当にARMのバイナリかどうか確かめてみましょう。
 
 ``` console
 # For micro:bit v2
@@ -117,4 +168,8 @@ ELF Header:
   Section header string table index: 20
 ```
 
+<!--
 Next, we'll flash the program into our microcontroller.
+-->
+
+次にこのプログラムをマイクロコントローラのフラッシュに書き込みます。
