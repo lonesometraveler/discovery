@@ -109,7 +109,7 @@ not only working with a HAL but with an entire BSP, so this also takes ownership
 of the Rust representation of the other chips on the board.
 -->
 
-最初の行はRustで書かれたほとんどのHALが内部的にどう動かくかに関係しています。
+最初の行はRustで書かれたほとんどのHALが内部的にどう動くかに関係しています。
 先述した通りHALはチップの全ペリフェラルを（Rust的な意味で）所有するPACクレートの上に構築されています。
 `let mut board = Board::take().unwrap();`はPACから全ペリフェラルを取得し、変数に束縛します。
 今回の場合、HALだけではなくBSP全体が対象となります。
