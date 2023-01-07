@@ -1,51 +1,40 @@
 <!-- # Windows tooling -->
 
-<<<<<<< HEAD:src/10-serial-communication/windows-tooling.md
 # Windowsのツール
 
-<!-- Before plugging the Serial module, run the following command on the terminal: -->
+<!-- Start by unplugging your micro:bit.
 
-シリアルモジュールを差し込む前に、ターミナルで次のコマンドを実行して下さい。
-=======
-Start by unplugging your micro:bit.
+Before plugging the micro:bit, run the following command on the terminal: -->
 
-Before plugging the micro:bit, run the following command on the terminal:
->>>>>>> upstream/master:microbit/src/06-serial-communication/windows-tooling.md
+まずmicro:bitをPCから抜きましょう。
+
+micro:bitを差し込む前に、ターミナルで次のコマンドを実行して下さい。
 
 ``` console
 $ mode
 ```
 
-<<<<<<< HEAD:src/10-serial-communication/windows-tooling.md
 <!-- 
-It will print a list of devices that are connected to your laptop. The ones that start with `COM` in
-=======
 It will print a list of devices that are connected to your computer. The ones that start with `COM` in
->>>>>>> upstream/master:microbit/src/06-serial-communication/windows-tooling.md
 their names are serial devices. This is the kind of device we'll be working with. Take note of all
 the `COM` *ports* `mode` outputs *before* plugging the serial module.
  -->
 
-このコマンドは、ノートPCに接続されているデバイスの一覧を表示します。`COM`から名前が始まるデバイスが、シリアルデバイスです。
-このデバイスがこれから使うデバイスの種類です。シリアルモジュールを差し込む*前に*`mode`が出力した全ての`COM`*ポート*をメモして下さい。
+このコマンドは、PCに接続されているデバイスの一覧を表示します。`COM`から名前が始まるデバイスが、シリアルデバイスです。
+このデバイスがこれから使うデバイスの種類です。micro:bitを差し込む*前に*`mode`が出力した全ての`COM`*ポート*をメモして下さい。
 
-<<<<<<< HEAD:src/10-serial-communication/windows-tooling.md
 <!-- 
-Now, plug the Serial module and run the `mode` command again. You should see a new `COM` port appear
-on the list. That's the COM port assigned to the serial module.
- -->
-
-それでは、シリアルモジュールを差し込み、`mode`コマンドを再び実行して下さい。新しい`COM`ポートが、リストに現れるはずです。
-これが、シリアルモジュールに割り当てらたCOMポートです。
-
-<!-- Now launch `putty`. A GUI will pop out. -->
-=======
 Now, plug the micro:bit and run the `mode` command again. If you see a new
 `COM` port appear on the list then you have that's the COM port assigned to the
 serial functionality on the micro:bit.
->>>>>>> upstream/master:microbit/src/06-serial-communication/windows-tooling.md
+ -->
 
-それでは、`putty`を起動します。GUIが現れます。
+それでは、micro:bitを差し込み、`mode`コマンドを再び実行して下さい。新しい`COM`ポートが、リストに現れるはずです。
+これが、micro:bitのシリアル通信機能に割り当てられたCOMポートです。
+
+<!-- Now launch `putty`. A GUI will pop out. -->
+
+次に`putty`を起動します。GUIが現れます。
 
 <p align="center">
 <img title="PuTTY settings" src="../assets/putty-settings.png">
@@ -82,16 +71,12 @@ that the serial port is configured as follows:
 <img title="PuTTY console" src="../assets/putty-console.png">
 </p>
 
-<<<<<<< HEAD:src/10-serial-communication/windows-tooling.md
 <!-- 
-If you type on this console, the TX (red) LED on the Serial module should blink. Each key stroke
-=======
 If you type on this console, the yellow LED on top of the micro:bit will blink. Each keystroke
->>>>>>> upstream/master:microbit/src/06-serial-communication/windows-tooling.md
 should make the LED blink once. Note that the console won't echo back what you type so the screen
 will remain blank.
  -->
 
-このコンソールでタイピングすると、シリアルモジュールのTX（赤色）LEDが点滅するはずです。
-キーストロークごとにLEDは1一度点滅します。コンソールは、タイピングしたことをエコーバックしないため、
+このコンソールでタイピングすると、micro:bit上部にある黄色のLEDが点滅するはずです。
+キーストロークごとにLEDは１度点滅します。コンソールは、タイピングしたことをエコーバックしないため、
 画面は何も表示されていないままになります。
