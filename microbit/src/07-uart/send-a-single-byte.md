@@ -50,7 +50,7 @@ familiar) as well as an option called "parity". Parity is a way to allow serial 
 the data they received was corrupted during transmission. We don't want to use that here so we simply exclude it.
 Then we wrap it up in the `UartePort` type so we can use it the same way as the micro:bit v1's `serial`. -->
 
-この関数はRustで表現されたUARTEペリフェラル（`board.UARTE0`）、ならびにTX/RXピン(`board.uart.into()`)の所有権を取得します。こうすることで、私たち以外の誰もUARTEとピンを使うことができなくなります。次に、ふたつの設定オプションをコンストラクタに渡します。ボーレート（`Baudrate`）とパリティ（`Parity`）です。パリティはシリアル通信ラインに受信したデータが破損していないか確認することを可能にするオプションです。ここでは使いませんので、除外（`EXCLUDED`）しておきましょう。最後に`UartePort`型で包んでやります。こうすることで、micro:bit v1の `serial`と同じように扱うことが可能になります。
+この関数はRustで表現されたUARTEペリフェラル（`board.UARTE0`）、ならびにTX/RXピン(`board.uart.into()`)の所有権を取得します。こうすることで、私たちの使っているUARTEとピンを他で使えないようにできます。次に、ふたつの設定オプションをコンストラクタに渡します。ボーレート（`Baudrate`）とパリティ（`Parity`）です。パリティはシリアル通信ラインに受信したデータが破損していないか確認することを可能にするオプションです。ここでは使いませんので、除外（`EXCLUDED`）しておきましょう。最後に`UartePort`型で包んでやります。こうすることで、micro:bit v1の `serial`と同じように扱うことが可能になります。
 
 <!-- After the initialization, we send our `X` via the newly created uart instance. The `block!` macro here is the `nb::block!`
 macro. `nb` is a (quoting from its description) "Minimal and reusable non-blocking I/O layer". It allows us to write
@@ -64,7 +64,7 @@ the I/O operation is done and has either succeeded or failed and then continue e
 decide to buffer output until it has received a certain number of bytes to send (this is the case with the UARTE implementation).
 Calling `flush()` forces it to write the bytes it currently has right now instead of waiting for more. -->
 
-最後に、シリアルポートを`flush()`します。なぜかというと、`embedded-hal::serial`トレイトの実装によっては、決まったバイト数を受信するまで出力をバッファにためておく設計となっていることがあるからです。（実際にUARTEはそのように実装されています。）`flush()`を呼ぶことで、さらなる受信を待つことなく、これまでに受信したバイトを強制的に出力させることができるのです。
+最後に、シリアルポートを`flush()`します。なぜかというと、`embedded-hal::serial`トレイトの実装によっては、送信するデータが一定のバイト数になるまで、送信バッファに貯めておく実装になっていることがあるからです。（実際にUARTEはそのように実装されています。）`flush()`を呼ぶことで、送信データをそれ以上待たずに、送信バッファの内容を強制的に出力させることができるのです。
 
 <!-- ## Testing it -->
 
