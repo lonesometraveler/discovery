@@ -1,10 +1,10 @@
 <!-- # Naive approach and `write!`  -->
 
-# イテレータを使う方法と`write!`
+# 単純な方法と`write!`
 
 <!-- ## Naive approach -->
 
-## イテレータを使う方法
+## 単純な方法
 
 <!-- You probably came up with a program similar to the following: -->
 
@@ -76,7 +76,7 @@ fn main() -> ! {
 you might want to have all the nice perks of `print!` such
 as argument formatting and so on. If you are wondering how to do that, read on. -->
 
-これも立派な実装ですが、別の方法がいいかもしれません。`print!`でするように、文字列をそのまま引数として渡すやり方です。ではどうやってそうするのか。読み進めてください。
+このイテレータを使った実装も正解ですが、別の方法がいいかもしれません。`print!`でするように、文字列をそのまま引数として渡すやり方です。ではどうやってそうするのか。読み進めてください。
 
 <!-- ## `write!` and `core::fmt::Write` -->
 
