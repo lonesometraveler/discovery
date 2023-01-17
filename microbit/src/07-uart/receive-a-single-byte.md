@@ -1,7 +1,11 @@
-# Receive a single byte
+<!-- # Receive a single byte -->
 
-So far we can send data from the microcontroller to your computer. It's time to try the opposite: receiving
-data from your computer. Luckily `embedded-hal` has again got us covered with this one:
+# １バイト受信する
+
+<!-- So far we can send data from the microcontroller to your computer. It's time to try the opposite: receiving
+data from your computer. Luckily `embedded-hal` has again got us covered with this one: -->
+
+これまでマイクロコントローラからコンピュータにデータを送信してきました。今度はその逆、コンピュータからの受信を試してみましょう。幸いなことに、これもまた`embedded-hal`のおかげで簡単です。
 
 ``` rust
 #![no_main]
@@ -63,13 +67,17 @@ fn main() -> ! {
 }
 ```
 
-The only part that changed, compared to our send byte program, is the loop
+<!-- The only part that changed, compared to our send byte program, is the loop
 at the end of `main()`. Here we use the `read()` function, provided by `embedded-hal`,
 in order to wait until a byte is available and read it. Then we print that byte
-into our RTT debugging console to see whether stuff is actually arriving.
+into our RTT debugging console to see whether stuff is actually arriving. -->
 
-Note that if you flash this program and start typing characters inside `minicom` to
+１バイト送信プログラムからの唯一の変更点は、`main()`の終わりにあるループです。ここで`embedded-hal`が提供する`read()`関数を使い、１バイト読み込むのを待っています。次にそのバイトをRTTデバッグコンソールにプリントして、データが本当に来ているか確認しています。
+
+<!-- Note that if you flash this program and start typing characters inside `minicom` to
 send them to your microcontroller you'll only be able to see numbers inside your
 RTT console since we are not converting the `u8` we received into an actual `char`.
 Since the conversion from `u8` to `char` is quite simple, I'll leave this task to
-you if you really do want to see the characters inside the RTT console.
+you if you really do want to see the characters inside the RTT console. -->
+
+注意点があります。このプログラムを書き込んで、`minicom`に文字をタイプするとき、RTTコンソールには数字だけが表示されます。というのも、このプログラムは受信した`u8`を実際の文字である`char`に変換しないからです。`u8`から`char`への変換はとても簡単です。どうしてもRTTコンソールで文字を確認したければ、ご自分で実装してみてください。
