@@ -1,10 +1,16 @@
-# Reverse a string
+<!-- # Reverse a string -->
 
-Alright, next let's make the server more interesting by having it respond to the client with the
+# 文字列を反転させる
+
+<!-- Alright, next let's make the server more interesting by having it respond to the client with the
 reverse of the text that they sent. The server will respond to the client every time they press the
-ENTER key. Each server response will be in a new line.
+ENTER key. Each server response will be in a new line. -->
 
-This time you'll need a buffer; you can use [`heapless::Vec`]. Here's the starter code:
+では次に、サーバーをもっとおもしろくしてみましょう。クライアントが送るテキストを反転させてから返信してください。サーバーは、ENTERキーが押されるたびに返信することとします。返信はそのつど新しい行となります。
+
+<!-- This time you'll need a buffer; you can use [`heapless::Vec`]. Here's the starter code: -->
+
+今回はバッファが必要ですので、[`heapless::Vec`]を使ってください。これがスターターコードです：
 
 [`heapless::Vec`]: https://docs.rs/heapless/0.7.7/heapless/struct.Vec.html
 
@@ -63,17 +69,16 @@ fn main() -> ! {
         UartePort::new(serial)
     };
 
-    // A buffer with 32 bytes of capacity
+    // 32バイト容量のバッファ
     let mut buffer: Vec<u8, 32> = Vec::new();
 
     loop {
         buffer.clear();
 
-        // TODO Receive a user request. Each user request ends with ENTER
-        // NOTE `buffer.push` returns a `Result`. Handle the error by responding
-        // with an error message.
+        // TODO クライアントからのリクエストを受信してください。それぞれのリクエストはENTERで終わります。
+        // 注 `buffer.push`は`Result`を返します。エラーメッセージを返信することで、エラーを処理してください。
 
-        // TODO Send back the reversed string
+        // TODO 反転させた文字列を返信してください。
     }
 }
 ```
