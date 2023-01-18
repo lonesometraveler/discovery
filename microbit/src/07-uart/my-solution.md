@@ -1,4 +1,6 @@
-# My solution
+<!-- # My solution -->
+
+# 解答例
 
 ```rust
 #![no_main]
@@ -55,14 +57,14 @@ fn main() -> ! {
         UartePort::new(serial)
     };
 
-    // A buffer with 32 bytes of capacity
+    // ３２バイト容量のバッファ
     let mut buffer: Vec<u8, consts::U32> = Vec::new();
 
     loop {
         buffer.clear();
 
         loop {
-            // We assume that the receiving cannot fail
+            // 受信は失敗しないものと想定します。
             let byte = nb::block!(serial.read()).unwrap();
 
             if buffer.push(byte).is_err() {
