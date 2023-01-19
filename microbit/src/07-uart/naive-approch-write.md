@@ -76,7 +76,7 @@ fn main() -> ! {
 you might want to have all the nice perks of `print!` such
 as argument formatting and so on. If you are wondering how to do that, read on. -->
 
-このイテレータを使った実装も正解ですが、別の方法がいいかもしれません。`print!`でするように、文字列をそのまま引数として渡すやり方です。ではどうやってそうするのか。読み進めてください。
+これも立派な実装ですが、`print!`のように引数を文字列にフォーマットできたらいいのに、とは思いませんか？　そんなことができるのでしょうか。読み進めてください。
 
 <!-- ## `write!` and `core::fmt::Write` -->
 
@@ -154,4 +154,4 @@ fn main() -> ! {
 see that it is functionally equivalent to the iterator-based
 program you came up with. -->
 
-このプログラムをmicro:bitに書き込むと、イテレータを使ったプログラムと同じ結果を得ることができます。
+このプログラムをmicro:bitに書き込むと、リファクタリング前のイテレータを使ったプログラムと同じ結果を得ることができます。
