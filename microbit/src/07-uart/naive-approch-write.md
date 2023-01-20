@@ -1,8 +1,14 @@
-# Naive approach and `write!`
+<!-- # Naive approach and `write!`  -->
 
-## Naive approach
+# 単純な方法と`write!`
 
-You probably came up with a program similar to the following:
+<!-- ## Naive approach -->
+
+## 単純な方法
+
+<!-- You probably came up with a program similar to the following: -->
+
+おそらく次のようなプログラムを書かれたことと思います。
 
 ```rs
 #![no_main]
@@ -66,15 +72,22 @@ fn main() -> ! {
 }
 ```
 
-While this is a perfectly valid implementation, at some point
+<!-- While this is a perfectly valid implementation, at some point
 you might want to have all the nice perks of `print!` such
-as argument formatting and so on. If you are wondering how to do that, read on.
+as argument formatting and so on. If you are wondering how to do that, read on. -->
 
-## `write!` and `core::fmt::Write`
-The `core::fmt::Write` trait allows us to use any struct that implements
+これも立派な実装ですが、`print!`のように引数を文字列にフォーマットできたらいいのに、とは思いませんか？　そんなことができるのでしょうか。読み進めてください。
+
+<!-- ## `write!` and `core::fmt::Write` -->
+
+## `write!`と`core::fmt::Write`
+
+<!-- The `core::fmt::Write` trait allows us to use any struct that implements
 it in basically the same way as we use `print!` in the `std` world.
 In this case, the `Uart` struct from the `nrf` HAL does implement `core::fmt::Write`
-so we can refactor our previous program into this:
+so we can refactor our previous program into this: -->
+
+`core::fmt::Write`というトレイトがあります。このトレイトを実装した構造体は、フォーマットされた文字列の出力先として扱うことができ、`std`環境における`print!`と同じような処理を可能にします。ここでは、`nrf` HALの`Uart`構造体が`core::fmt::Write`を実装しています。これを利用して先ほどのプログラムをリファクタリングすると、こうなります：
 
 ```rs
 #![no_main]
@@ -137,6 +150,8 @@ fn main() -> ! {
 }
 ```
 
-If you were to flash this program onto your micro:bit, you'll
+<!-- If you were to flash this program onto your micro:bit, you'll
 see that it is functionally equivalent to the iterator-based
-program you came up with.
+program you came up with. -->
+
+このプログラムをmicro:bitに書き込むと、リファクタリング前のイテレータを使ったプログラムと同じ結果を得ることができます。
