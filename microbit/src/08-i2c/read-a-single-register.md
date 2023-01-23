@@ -38,7 +38,7 @@ it does provide two registers called `WHO_AM_I_A` at address `0x0f` and `WHO_AM_
 at address `0x4f` which contain some bit patterns that are unique to the device
 (The A is as in accelerometer and the M is as in magnetometer). -->
 
-次に読み出しのためのレジスタが必要です。多くのI2CチップはIDを識別するためのレジスタを持っています。というのも、何千もの（あるいは何百万もの）I2Cチップが流通しているわけですから、同じアドレスを持つ別製品が製造されていてもおかしくないからです。（結局のところ、アドレスはたったの７ビット幅なのですから。）このデバイスIDレジスタを利用することで、たまたま同じアドレスを持った別のチップではなく、本当にLSM303AGRと通信していることを確認することができるのです。データシート（４６と６１ページを参照）にあるように、LSM303AGRはアドレス`0x0f`に`WHO_AM_I_A`(Aは加速度計を指す)、アドレス`0x4f`に`WHO_AM_I_M`(Mは磁力計を指す)というふたつのレジスタを提供しており、それぞれにはデバイス特有の値が入っています。
+次に読み出しのためのレジスタが必要です。多くのI2Cチップはデバイスを識別するためのレジスタを持っています。というのも、何千もの（あるいは何百万もの）I2Cチップが流通しているわけですから、同じアドレスを持つ別製品が製造されていてもおかしくないからです。（結局のところ、アドレスはたったの７ビット幅なのですから。）このデバイスIDレジスタを利用することで、たまたま同じアドレスを持った別のチップではなく、本当にLSM303AGRと通信していることを確認することができるのです。データシート（４６と６１ページを参照）にあるように、LSM303AGRはアドレス`0x0f`に`WHO_AM_I_A`(Aは加速度計を指す)、アドレス`0x4f`に`WHO_AM_I_M`(Mは磁力計を指す)というふたつのレジスタを提供しており、それぞれにはデバイス特有の値が入っています。
 
 <!-- The only thing missing now is the software part, i.e. which API of the `microbit`/the HAL
 crates we should use for this. However, if you read through the datasheet of the nRF chip
