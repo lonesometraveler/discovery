@@ -19,7 +19,7 @@ be basically a plug and play experience (plus reading a bit of documentation). I
 page already provides us with everything we need to know in order to read accelerometer data but using a Raspberry Pi. We'll
 just have to adapt it to our chip: -->
 
-Rustがサポートする（そして将来サポートするであろう）すべての組込みプラットフォームに別々のLSM303AGR用ドライバを開発しなくてはならないとしたら、それはまったくもって無駄なことです。それを避けるために、`embedded-hal`トレイトを実装したジェネリクス型を消費するコードを書き、プラットフォームに依存しないドライバを作ります。幸運なことに、その作業はすでに[`lsm303agr`] クレート内でなされています。ですから加速度計、磁力計の値を読み取るのは、（少しばかりドキュメンテーションを読むことを除けば）基本的にプラグアンドプレイです。実際に、`crates.io`のページを見れば、Raspberry Pi向けにではありますが、加速度計のデータを読み取るのに必要な情報はすべて書いてあります。あとはそれを私たちが使うチップ向けに修正するだけです。
+Rustがサポートする（そして将来サポートするであろう）すべての組込みプラットフォームに別々のLSM303AGR用ドライバを開発しなくてはならないとしたら、それはまったくもって無駄なことです。それを避けるために、`embedded-hal`トレイトを実装したジェネリック型を消費するコードを書き、プラットフォームに依存しないドライバを作ります。幸運なことに、その作業はすでに[`lsm303agr`] クレート内でなされています。ですから加速度計、磁力計の値を読み取るのは、（少しばかりドキュメンテーションを読むことを除けば）基本的にプラグアンドプレイです。実際に、`crates.io`のページを見れば、Raspberry Pi向けにではありますが、加速度計のデータを読み取るのに必要な情報はすべて書いてあります。あとはそれを私たちが使うチップ向けに修正するだけです。
 
 [`lsm303agr`]: https://crates.io/crates/lsm303agr
 
@@ -85,7 +85,7 @@ fn main() -> ! {
     #[cfg(feature = "v2")]
     let i2c = { twim::Twim::new(board.TWIM0, board.i2c_internal.into(), FREQUENCY_A::K100) };
 
-    // crates.ioドキュメンテーションからのコード
+    // ドキュメンテーションからのコード
     let mut sensor = Lsm303agr::new_with_i2c(i2c);
     sensor.init().unwrap();
     sensor.set_accel_odr(AccelOutputDataRate::Hz50).unwrap();
