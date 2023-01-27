@@ -1,4 +1,6 @@
-# Solution 1
+<!-- # Solution 1 -->
+
+# 解答例1
 
 ``` rust
 #![deny(unsafe_code)]
@@ -56,19 +58,18 @@ fn main() -> ! {
         data = calibrated_measurement(data, &calibration);
 
         let dir = match (data.x > 0, data.y > 0) {
-            // Quadrant I
+            // 第I象限
             (true, true) => Direction::NorthEast,
-            // Quadrant II
+            // 第II象限
             (false, true) => Direction::NorthWest,
-            // Quadrant III
+            // 第III象限
             (false, false) => Direction::SouthWest,
-            // Quadrant IV
+            // 第IV象限
             (true, false) => Direction::SouthEast,
         };
 
-        // use the led module to turn the direction into an LED arrow
-        // and the led display functions from chapter 5 to display the
-        // arrow
+        // ledモジュール（src/led.rs）を利用して、方角をLED矢印に変換。
+        // それから５章で使ったLEDディスプレイ関数を使い、矢印をLEDマトリクス上に表示。
         display.show(&mut timer, direction_to_led(dir), 100);
     }
 }
