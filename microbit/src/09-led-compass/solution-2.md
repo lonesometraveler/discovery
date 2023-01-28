@@ -1,4 +1,6 @@
-# Solution 2
+<!-- # Solution 2 -->
+
+# 解答例2
 
 ``` rust
 #![deny(unsafe_code)]
@@ -59,10 +61,10 @@ fn main() -> ! {
         let mut data = sensor.mag_data().unwrap();
         data = calibrated_measurement(data, &calibration);
 
-        // use libm's atan2f since this isn't in core yet
+        // atan2はcoreに入っていないので、libmのatan2fを使います。
         let theta = atan2f(data.x as f32, data.y as f32);
 
-        // Figure out the direction based on theta
+        // thetaの値から、指す方角を決める。
         let dir = if theta < -7. * PI / 8. {
             Direction::South
         } else if theta < -5. * PI / 8. {
