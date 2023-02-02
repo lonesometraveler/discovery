@@ -1,4 +1,6 @@
-# My solution
+<!-- # My solution -->
+
+# 解答例
 
 ``` rust
 #![deny(unsafe_code)]
@@ -47,8 +49,8 @@ fn main() -> ! {
     let mut sensor = Lsm303agr::new_with_i2c(i2c);
     sensor.init().unwrap();
     sensor.set_accel_odr(AccelOutputDataRate::Hz50).unwrap();
-    // Allow the sensor to measure up to 16 G since human punches
-    // can actually be quite fast
+    // 16Gまで計測できるようにセンサの設定を変更。
+    // 人のパンチは案外速いものです。
     sensor.set_accel_scale(AccelScale::G16).unwrap();
 
     let mut max_g = 0.;
@@ -56,43 +58,42 @@ fn main() -> ! {
 
     loop {
         while !sensor.accel_status().unwrap().xyz_new_data {}
-        // x acceleration in g
+        // X軸の加速度をg単位で取得
         let g_x = sensor.accel_data().unwrap().x as f32 / 1000.0;
 
         if measuring {
-            // Check the status of our contdown
+            // contdownタイマのステータスをチェック
             match countdown.wait() {
-                // countdown isn't done yet
+                // countdownはまだ終わっていない
                 Err(Error::WouldBlock) => {
                     if g_x > max_g {
                         max_g = g_x;
                     }
                 },
-                // Countdown is done
+                // countdown終了
                 Ok(_) => {
-                    // Report max value
+                    // 最大加速度を報告
                     rprintln!("Max acceleration: {}g", max_g);
 
-                    // Reset
+                    // リセット
                     max_g = 0.;
                     measuring = false;
                 },
-                // Since the nrf52 and nrf51 HAL have Void as an error type
-                // this path cannot occur, as Void is an empty type
+                // nrf52とnrf51のHALはエラー型としてVoidを返します。
+                // VoidはEmpty型なので、ここにたどり着くことはありません。
                 Err(Error::Other(_)) => {
                     unreachable!()
                 }
             }
         } else {
-            // If acceleration goes above a threshold, we start measuring
+            // 加速度がしきい値を超えれば測定を開始
             if g_x > THRESHOLD {
                 rprintln!("START!");
 
                 measuring = true;
                 max_g = g_x;
-                // The documentation notes that the timer works at a frequency
-                // of 1 Mhz, so in order to wait for 1 second we have to
-                // set it to 1_000_000 ticks.
+                // ドキュメンテーションによると、タイマは1Mhzで動作します。
+                // よって、１秒待つためには1_000_000ティック必要です。
                 countdown.start(1_000_000_u32);
             }
         }
