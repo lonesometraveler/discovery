@@ -7,7 +7,7 @@ horizontal. That way we won't have to deal with subtracting that *fictitious* `1
 before which would be hard because that `1g` could have X Y Z components depending on how the board
 is oriented. -->
 
-話を簡単にするために、ここではボードを水平に保った状態でX軸の加速度だけを測ることにします。
+話を簡単にするために、ここではボードを水平に保った状態でX軸の加速度だけを測ることにします。そうすることで、前のページで確認した*架空の* `1g`を引く必要がなくなります。架空の`1g`はボードの向きによってX Y Zのどれにでも現れるので、補正するのはむずかしいです。
 
 <!-- Here's what the punch-o-meter must do: -->
 
