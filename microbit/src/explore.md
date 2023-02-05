@@ -380,7 +380,7 @@ sensor fusion.-->
 <!--- If you are looking for a general overview of what is available in Rust Embedded right now check out the [Awesome Rust Embedded]
   list-->
   
-- 組込みRust界の現状について一般的な情報がほしいということであれば、[Awesome Rust Embedded]リストがおすすめです。
+- 組込みRustで今すぐ使えるものの一覧をお探しなら、[Awesome Rust Embedded]リストがおすすめです。
 
 [Awesome Rust Embedded]: https://github.com/rust-embedded/awesome-embedded-rust/
 
